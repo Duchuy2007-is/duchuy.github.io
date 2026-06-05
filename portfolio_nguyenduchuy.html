@@ -635,11 +635,6 @@
         <div class="container mx-auto px-6 py-8 text-center text-sm text-slate-500 flex flex-col items-center gap-4">
             <p>© 2026 Nguyễn Đức Huy. Bảo lưu mọi quyền.</p>
             <p class="text-xs">Portfolio được thiết kế theo phong cách Liquid Glass Light Mode, đảm bảo chuẩn Rubric.</p>
-            
-            <!-- NÚT XUẤT FILE ĐÃ NHÚNG THÔNG TIN VÀ AVATAR MỚI [1, 2] -->
-            <button onclick="exportUpdatedHTML()" class="bg-gradient-to-r from-emerald-500 to-green-600 hover:opacity-90 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5 text-xs flex items-center gap-2">
-                <span>💾 Xuất file HTML nộp bài (Đã lưu ảnh &amp; thông tin)</span>
-            </button>
         </div>
     </footer>
 
@@ -1026,44 +1021,6 @@
                     alert("Có lỗi xảy ra khi xóa file.");
                 }
             }
-        }
-
-        // --- 6. XUẤT FILE HTML ĐÃ NHÚNG AVATAR & THÔNG TIN MỚI [1, 2] ---
-        function exportUpdatedHTML() {
-            // Lấy thông tin hiện tại từ localStorage
-            const name = localStorage.getItem("pf_name") || defaultProfile.name;
-            const major = localStorage.getItem("pf_major") || defaultProfile.major;
-            const bio = localStorage.getItem("pf_bio") || defaultProfile.bio;
-            const hobbies = localStorage.getItem("pf_hobbies") || defaultProfile.hobbies;
-            const goals = localStorage.getItem("pf_goals") || defaultProfile.goals;
-            const purpose = localStorage.getItem("pf_purpose") || defaultProfile.purpose;
-            const avatar = localStorage.getItem("pf_avatar") || defaultProfile.avatar;
-
-            // Đọc toàn bộ nội dung HTML hiện tại trên trang
-            let docText = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
-
-            // Sử dụng Regex để thay thế đối tượng defaultProfile tĩnh bằng dữ liệu thực tế đã sửa [1, 2]
-            const regex = /const defaultProfile = \{[\s\S]*?\};/;
-            const newDefaultProfile = `const defaultProfile = {
-            name: ${JSON.stringify(name)},
-            major: ${JSON.stringify(major)},
-            bio: ${JSON.stringify(bio)},
-            hobbies: ${JSON.stringify(hobbies)},
-            goals: ${JSON.stringify(goals)},
-            purpose: ${JSON.stringify(purpose)},
-            avatar: ${JSON.stringify(avatar)}
-        };`;
-
-            docText = docText.replace(regex, newDefaultProfile);
-
-            // Tạo luồng Blob và tải xuống file HTML hoàn chỉnh [1, 2]
-            const blob = new Blob([docText], { type: "text/html" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "portfolio_nguyenduchuy.html";
-            a.click();
-            URL.revokeObjectURL(url);
         }
     </script>
 </body></html>
