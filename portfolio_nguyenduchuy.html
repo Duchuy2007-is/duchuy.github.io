@@ -58,12 +58,7 @@
             pointer-events: none;
         }
 
-        /* CSS phân tách mượt mà cho các Bài tập (Sub-tabs) */
-        .project-pane { display: none; opacity: 0; }
-        .project-pane.active {
-            display: block;
-            animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+        /* CSS phân tách mượt mà cho các Bài tập (Sub-tabs) - Đã tích hợp vào 3D Carousel */
 
         /* Hiệu ứng chuyển động cho khối chất lỏng nền */
         @keyframes float-slow {
@@ -368,6 +363,75 @@
             pointer-events: none;
         }
 
+        /* 3D Projects Carousel */
+        .carousel-container {
+            perspective: 1500px;
+            position: relative;
+            width: 100%;
+            height: 780px; /* Mobile height */
+            margin: 0 auto;
+            overflow: visible;
+        }
+        @media (min-width: 768px) {
+            .carousel-container {
+                height: 620px; /* Desktop height */
+            }
+        }
+        .carousel-ring {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-pane {
+            display: block !important;
+            position: absolute !important;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transition: opacity 0.8s ease, transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0.12;
+            pointer-events: none;
+            overflow-y: auto;
+        }
+        .project-pane.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 10;
+        }
+        
+        .project-pane::-webkit-scrollbar {
+            width: 6px;
+        }
+        .project-pane::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .project-pane::-webkit-scrollbar-thumb {
+            background: rgba(16, 185, 129, 0.25);
+            border-radius: 9999px;
+        }
+        .project-pane::-webkit-scrollbar-thumb:hover {
+            background: rgba(16, 185, 129, 0.45);
+        }
+
+        /* Modal xem tài liệu kính mờ cao cấp */
+        #pdf-viewer-modal {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        #pdf-viewer-modal.hidden {
+            display: none !important;
+        }
+        .close-modal-btn:hover {
+            transform: rotate(90deg);
+            background-color: rgba(244, 63, 94, 0.15) !important;
+            color: #e11d48 !important;
+            border-color: rgba(244, 63, 94, 0.4) !important;
+        }
+
         /* Avatar styles to make sure it covers and has a border radius */
         #profile-avatar-display {
             width: 100%;
@@ -528,11 +592,12 @@
                 <button onclick="switchProject('6')" id="btn-project-6" class="project-btn flex-1 min-w-[90px] px-3 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 text-slate-600 hover:text-emerald-700 hover:bg-white/30">Bài 6</button>
             </div>
 
-            <!-- KHU VỰC HIỂN THỊ CÁC BÀI TẬP CHI TIẾT -->
-            <div class="mt-8">
+            <!-- KHU VỰC HIỂN THỊ CÁC BÀI TẬP CHI TIẾT (3D CAROUSEL CONTAINER) -->
+            <div class="carousel-container mt-8 reveal-3d">
+                <div class="carousel-ring" id="project-carousel-ring">
                 
                 <!-- BÀI 1 -->
-                <div id="project-pane-1" class="project-pane active bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 overflow-hidden shadow-lg tilt-card reveal-3d">
+                <div id="project-pane-1" class="project-pane active bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 shadow-lg tilt-card">
                     <div class="card-glare-wrapper"><div class="card-glare"></div></div>
                     <div class="bg-emerald-50/50 px-8 py-4 border-b border-emerald-100 flex justify-between items-center">
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Bài 1</span>
@@ -585,7 +650,7 @@
                 </div>
 
                 <!-- BÀI 2 -->
-                <div id="project-pane-2" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 overflow-hidden shadow-lg tilt-card reveal-3d">
+                <div id="project-pane-2" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 shadow-lg tilt-card">
                     <div class="card-glare-wrapper"><div class="card-glare"></div></div>
                     <div class="bg-emerald-50/50 px-8 py-4 border-b border-emerald-100 flex justify-between items-center">
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Bài 2</span>
@@ -638,7 +703,7 @@
                 </div>
 
                 <!-- BÀI 3 -->
-                <div id="project-pane-3" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 overflow-hidden shadow-lg tilt-card reveal-3d">
+                <div id="project-pane-3" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 shadow-lg tilt-card">
                     <div class="card-glare-wrapper"><div class="card-glare"></div></div>
                     <div class="bg-emerald-50/50 px-8 py-4 border-b border-emerald-100 flex justify-between items-center">
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Bài 3</span>
@@ -691,7 +756,7 @@
                 </div>
 
                 <!-- BÀI 4 -->
-                <div id="project-pane-4" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 overflow-hidden shadow-lg tilt-card reveal-3d">
+                <div id="project-pane-4" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 shadow-lg tilt-card">
                     <div class="card-glare-wrapper"><div class="card-glare"></div></div>
                     <div class="bg-emerald-50/50 px-8 py-4 border-b border-emerald-100 flex justify-between items-center">
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Bài 4</span>
@@ -743,7 +808,7 @@
                 </div>
 
                 <!-- BÀI 5 -->
-                <div id="project-pane-5" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 overflow-hidden shadow-lg tilt-card reveal-3d">
+                <div id="project-pane-5" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 shadow-lg tilt-card">
                     <div class="card-glare-wrapper"><div class="card-glare"></div></div>
                     <div class="bg-emerald-50/50 px-8 py-4 border-b border-emerald-100 flex justify-between items-center">
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Bài 5</span>
@@ -798,7 +863,7 @@
                 </div>
 
                 <!-- BÀI 6 -->
-                <div id="project-pane-6" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 overflow-hidden shadow-lg tilt-card reveal-3d">
+                <div id="project-pane-6" class="project-pane bg-white/70 backdrop-blur-xl rounded-3xl border border-white/80 shadow-lg tilt-card">
                     <div class="card-glare-wrapper"><div class="card-glare"></div></div>
                     <div class="bg-emerald-50/50 px-8 py-4 border-b border-emerald-100 flex justify-between items-center">
                         <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Bài 6</span>
@@ -856,8 +921,9 @@
                     </div>
                 </div>
 
-            </div>
-        </section>
+            </div> <!-- End of carousel-ring -->
+        </div> <!-- End of carousel-container -->
+    </section>
 
 
         <!-- ================= TRANG TỔNG KẾT ================= -->
@@ -992,6 +1058,9 @@
             initProfile();
             await loadSavedFiles();
             fixBrokenOpenDownloadLinks();
+            
+            // Init 3D carousel for project panes
+            initCarousel();
             
             // Fade out preloader after all loads finish
             const preloader = document.getElementById('preloader');
@@ -1149,7 +1218,61 @@
             }
         }
 
-        // --- 3. QUẢN LÝ PHÂN CHIA BÀI TẬP (SUB-TABS CHO BÀI 1-6) ---
+        // --- 3. QUẢN LÝ PHÂN CHIA BÀI TẬP (SUB-TABS CHO BÀI 1-6 VỚI 3D CAROUSEL) ---
+        let carouselRadius = 0;
+        
+        function initCarousel() {
+            const container = document.querySelector('.carousel-container');
+            const ring = document.getElementById('project-carousel-ring');
+            const panes = document.querySelectorAll('.project-pane');
+            if (!container || !ring || panes.length === 0) return;
+            
+            const width = container.offsetWidth;
+            // Calculate 3D radius for a hexagon (6 items)
+            carouselRadius = Math.round((width / 2) / Math.tan(Math.PI / 6));
+            
+            // Set 3D transform on each panel
+            panes.forEach((pane, i) => {
+                const angle = i * 60; // 360 / 6
+                pane.style.transform = `rotateY(${angle}deg) translateZ(${carouselRadius}px)`;
+            });
+            
+            // Center the carousel to active project (default to 1)
+            updateCarousel(1);
+        }
+        
+        function updateCarousel(projectId) {
+            const ring = document.getElementById('project-carousel-ring');
+            if (!ring) return;
+            
+            const index = parseInt(projectId) - 1;
+            const angle = -index * 60;
+            
+            // Apply transform to center the active panel
+            ring.style.transform = `translateZ(-${carouselRadius}px) rotateY(${angle}deg)`;
+        }
+        
+        // Recalculate radius and center carousel on resize
+        window.addEventListener('resize', () => {
+            const container = document.querySelector('.carousel-container');
+            const panes = document.querySelectorAll('.project-pane');
+            if (container && panes.length > 0) {
+                const width = container.offsetWidth;
+                carouselRadius = Math.round((width / 2) / Math.tan(Math.PI / 6));
+                panes.forEach((pane, i) => {
+                    const angle = i * 60;
+                    pane.style.transform = `rotateY(${angle}deg) translateZ(${carouselRadius}px)`;
+                });
+                
+                // Keep the active project centered
+                const activePane = document.querySelector('.project-pane.active');
+                if (activePane) {
+                    const activeId = activePane.id.replace('project-pane-', '');
+                    updateCarousel(activeId);
+                }
+            }
+        });
+
         function switchProject(projectId) {
             const panes = document.querySelectorAll('.project-pane');
             panes.forEach(pane => {
@@ -1160,6 +1283,9 @@
             if (activePane) {
                 activePane.classList.add('active');
             }
+            
+            // Rotate carousel to selected project
+            updateCarousel(projectId);
 
             const buttons = document.querySelectorAll('.project-btn');
             buttons.forEach(btn => {
@@ -1334,10 +1460,22 @@
             const iframe = document.getElementById('pdf-viewer-iframe');
             const title = document.getElementById('pdf-viewer-title');
             const openNewTabBtn = document.getElementById('pdf-viewer-open-new-tab');
+            const downloadBtn = document.getElementById('pdf-viewer-download');
+            const spinner = document.getElementById('pdf-viewer-spinner');
             
             title.textContent = `Xem trực tuyến: ${fileName}`;
+            
+            // Show inner spinner
+            if (spinner) {
+                spinner.style.opacity = '1';
+                spinner.style.visibility = 'visible';
+            }
+            
             iframe.src = filePath;
             openNewTabBtn.href = filePath;
+            if (downloadBtn) {
+                downloadBtn.href = filePath;
+            }
             
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden'; // Chặn cuộn trang nền
@@ -1352,7 +1490,7 @@
             document.body.style.overflow = ''; // Cho phép cuộn trang lại
         }
 
-        // Đóng modal khi nhấp ra ngoài vùng nội dung modal
+        // Đóng modal khi nhấp ra ngoài vùng nội dung modal & quản lý ẩn spinner
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('pdf-viewer-modal');
             if (modal) {
@@ -1361,6 +1499,17 @@
                         closeDocument();
                     }
                 });
+            }
+            
+            const iframe = document.getElementById('pdf-viewer-iframe');
+            const spinner = document.getElementById('pdf-viewer-spinner');
+            if (iframe && spinner) {
+                iframe.onload = () => {
+                    spinner.style.opacity = '0';
+                    setTimeout(() => {
+                        spinner.style.visibility = 'hidden';
+                    }, 300);
+                };
             }
         });
 
@@ -1587,6 +1736,79 @@
             let particles = [];
             const particleCount = 60;
             
+            // Interactive mouse click effects
+            let clickParticles = [];
+            let clickRipples = [];
+            
+            class ClickParticle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = Math.random() * 3 + 1.5; // size of click particles
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 2.5 + 1; // speed of click particles
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed;
+                    this.alpha = 1.0;
+                    this.decay = Math.random() * 0.02 + 0.015; // fade rate
+                }
+                
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.vx *= 0.96; // friction
+                    this.vy *= 0.96;
+                    this.alpha -= this.decay;
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(16, 185, 129, ${this.alpha})`;
+                    ctx.fill();
+                }
+            }
+            
+            class ClickRipple {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.radius = 2;
+                    this.maxRadius = 45;
+                    this.alpha = 0.7;
+                    this.speed = 2.5;
+                }
+                
+                update() {
+                    this.radius += this.speed;
+                    this.alpha = 1 - (this.radius / this.maxRadius);
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(16, 185, 129, ${this.alpha})`;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                }
+            }
+            
+            window.addEventListener('click', (e) => {
+                // Ignore clicks if click happened inside active modal to avoid overlap
+                const modal = document.getElementById('pdf-viewer-modal');
+                if (modal && !modal.classList.contains('hidden') && e.target.closest('#pdf-viewer-modal > div')) {
+                    return;
+                }
+                
+                // Spawn one ripple
+                clickRipples.push(new ClickRipple(e.clientX, e.clientY));
+                
+                // Spawn 12 particles
+                for (let i = 0; i < 12; i++) {
+                    clickParticles.push(new ClickParticle(e.clientX, e.clientY));
+                }
+            });
+            
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -1629,6 +1851,28 @@
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 
+                // Update and draw click ripples
+                for (let i = clickRipples.length - 1; i >= 0; i--) {
+                    const cr = clickRipples[i];
+                    cr.update();
+                    if (cr.alpha <= 0 || cr.radius >= cr.maxRadius) {
+                        clickRipples.splice(i, 1);
+                    } else {
+                        cr.draw();
+                    }
+                }
+                
+                // Update and draw click particles
+                for (let i = clickParticles.length - 1; i >= 0; i--) {
+                    const cp = clickParticles[i];
+                    cp.update();
+                    if (cp.alpha <= 0) {
+                        clickParticles.splice(i, 1);
+                    } else {
+                        cp.draw();
+                    }
+                }
+                
                 // Update and draw particles
                 particles.forEach(p => {
                     p.update();
@@ -1669,28 +1913,40 @@
         }
     </script>
 
-    <!-- MODAL XEM FILE TRỰC TUYẾN -->
-    <div id="pdf-viewer-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200/60 w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden animate-[modalScaleIn_0.35s_cubic-bezier(0.16,1,0.3,1)_forwards]">
+    <!-- MODAL XEM FILE TRỰC TUYẾN (GLASSMORPHISM STYLE) -->
+    <div id="pdf-viewer-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-[0_30px_70px_-10px_rgba(16,185,129,0.18),0_20px_40px_-20px_rgba(0,0,0,0.15)] border border-white/80 w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden animate-[modalScaleIn_0.35s_cubic-bezier(0.16,1,0.3,1)_forwards]">
             <!-- Header -->
-            <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center flex-shrink-0">
-                <div class="flex items-center space-x-2">
-                    <span class="text-xl">📄</span>
-                    <h3 id="pdf-viewer-title" class="font-bold text-slate-800 text-base md:text-lg truncate max-w-md md:max-w-xl">Xem trực tuyến</h3>
+            <div class="bg-white/40 px-8 py-5 border-b border-emerald-100/40 flex justify-between items-center flex-shrink-0">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xl p-2 bg-emerald-50 text-emerald-700 rounded-xl border border-emerald-100/50">📄</span>
+                    <h3 id="pdf-viewer-title" class="font-extrabold text-emerald-950 text-base md:text-lg truncate max-w-md md:max-w-xl">Xem trực tuyến</h3>
                 </div>
                 <div class="flex items-center space-x-2">
                     <!-- Open in new tab button -->
-                    <a id="pdf-viewer-open-new-tab" href="#" target="_blank" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-3.5 rounded-xl transition-all duration-300 shadow-sm flex items-center gap-1.5" title="Mở trong tab mới">
+                    <a id="pdf-viewer-open-new-tab" href="#" target="_blank" class="text-xs bg-emerald-50 hover:bg-emerald-100 text-emerald-700 hover:text-emerald-800 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 border border-emerald-100/60 shadow-sm flex items-center gap-1.5 hover:-translate-y-0.5" title="Mở trong tab mới">
                         ↗️ Tab mới
                     </a>
+                    <!-- Download button -->
+                    <a id="pdf-viewer-download" href="#" download class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 border border-slate-200/40 shadow-sm flex items-center gap-1.5 hover:-translate-y-0.5" title="Tải xuống tệp trực tiếp">
+                        📥 Tải xuống
+                    </a>
                     <!-- Close button -->
-                    <button onclick="closeDocument()" class="text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 p-2 rounded-xl transition-all font-bold text-lg leading-none">
+                    <button onclick="closeDocument()" class="close-modal-btn text-rose-500 hover:text-rose-700 bg-rose-50/60 p-2.5 rounded-full border border-rose-100/50 transition-all duration-300 font-bold text-base leading-none flex items-center justify-center shadow-sm">
                         ✕
                     </button>
                 </div>
             </div>
             <!-- Body -->
-            <div class="flex-1 bg-slate-800 relative">
+            <div class="flex-1 bg-slate-950/20 relative">
+                <!-- Inner loading spinner -->
+                <div id="pdf-viewer-spinner" class="absolute inset-0 flex items-center justify-center bg-white/20 backdrop-blur-sm z-10 transition-all duration-300">
+                    <div class="preloader-content scale-75">
+                        <div class="preloader-ring preloader-ring-cw"></div>
+                        <div class="preloader-ring preloader-ring-ccw"></div>
+                        <span class="preloader-logo text-emerald-800">NDH</span>
+                    </div>
+                </div>
                 <iframe id="pdf-viewer-iframe" src="about:blank" class="w-full h-full border-0"></iframe>
             </div>
         </div>
