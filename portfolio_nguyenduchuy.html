@@ -173,8 +173,8 @@
                         <div class="flex items-center space-x-3">
                             <span class="text-3xl">📄</span>
                             <div class="text-left">
-                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan1_NguyenDucHuy.docx</p>
-                                <p class="text-xs text-slate-500">541.5 KB</p>
+                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan1_NguyenDucHuy.pdf</p>
+                                <p class="text-xs text-slate-500">508.1 KB</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-2">
@@ -225,8 +225,8 @@
                         <div class="flex items-center space-x-3">
                             <span class="text-3xl">📄</span>
                             <div class="text-left">
-                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan2_NguyenDucHuy.docx</p>
-                                <p class="text-xs text-slate-500">25.9 KB</p>
+                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan2_NguyenDucHuy.pdf</p>
+                                <p class="text-xs text-slate-500">112.0 KB</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-2">
@@ -328,8 +328,8 @@
                         <div class="flex items-center space-x-3">
                             <span class="text-3xl">📄</span>
                             <div class="text-left">
-                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan4_NguyenDucHuy.docx</p>
-                                <p class="text-xs text-slate-500">1010.2 KB</p>
+                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan4_NguyenDucHuy.pdf</p>
+                                <p class="text-xs text-slate-500">399.3 KB</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-2">
@@ -382,8 +382,8 @@
                         <div class="flex items-center space-x-3">
                             <span class="text-3xl">📄</span>
                             <div class="text-left">
-                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan5_NguyenDucHuy.docx</p>
-                                <p class="text-xs text-slate-500">18.1 KB</p>
+                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan5_NguyenDucHuy.pdf</p>
+                                <p class="text-xs text-slate-500">99.2 KB</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-2">
@@ -440,8 +440,8 @@
                         <div class="flex items-center space-x-3">
                             <span class="text-3xl">📄</span>
                             <div class="text-left">
-                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan6_NguyenDucHuy.docx</p>
-                                <p class="text-xs text-slate-500">20.2 KB</p>
+                                <p class="text-sm font-bold text-slate-800 truncate max-w-[200px]">Tuan6_NguyenDucHuy.pdf</p>
+                                <p class="text-xs text-slate-500">103.6 KB</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-2">
@@ -774,7 +774,7 @@
             document.querySelectorAll('a').forEach(a => {
                 const href = a.getAttribute('href') || '';
                 if (!href.startsWith('blob:null/')) return;
-                if (!a.textContent.includes('Mở đọc / Tải về')) return;
+                if (!a.textContent.includes('Mở đọc / Tải về') && !a.textContent.includes('Xem trực tuyến')) return;
 
                 const wrapper =
                     a.closest('.p-4') ||
@@ -786,27 +786,31 @@
                     wrapper?.querySelector('p.text-sm') ||
                     wrapper?.querySelector('p');
 
-                const fileName = nameEl?.textContent?.trim();
+                let fileName = nameEl?.textContent?.trim();
                 if (!fileName) return;
 
-                a.href = ASSIGNMENTS_DIR + encodeURIComponent(fileName);
+                // Force PDF path for viewing
+                if (fileName.endsWith('.docx')) {
+                    fileName = fileName.replace('.docx', '.pdf');
+                }
+
+                const filePath = ASSIGNMENTS_DIR + encodeURIComponent(fileName);
+                a.href = filePath;
                 a.target = '_blank';
                 a.rel = 'noopener';
-                a.title = 'Click để mở xem; Ctrl/Cmd+Click để tải về';
+                a.title = 'Click để xem trực tuyến ngay tại đây; Ctrl/Cmd+Click để tải về';
+                a.innerHTML = '👁️ Xem trực tuyến';
 
                 // Add once per element
                 if (a.dataset.dlWired === '1') return;
                 a.dataset.dlWired = '1';
 
                 a.addEventListener('click', (e) => {
-                    if (!(e.ctrlKey || e.metaKey)) return;
+                    if (e.ctrlKey || e.metaKey) {
+                        return; // Let browser handle normal new tab/download
+                    }
                     e.preventDefault();
-                    const dl = document.createElement('a');
-                    dl.href = a.href;
-                    dl.download = fileName;
-                    document.body.appendChild(dl);
-                    dl.click();
-                    dl.remove();
+                    viewDocument(filePath, fileName);
                 });
             });
         }
@@ -898,7 +902,70 @@
                 }
             }
         }
+
+        // --- 6. XEM FILE PDF TRỰC TUYẾN ---
+        function viewDocument(filePath, fileName) {
+            const modal = document.getElementById('pdf-viewer-modal');
+            const iframe = document.getElementById('pdf-viewer-iframe');
+            const title = document.getElementById('pdf-viewer-title');
+            const openNewTabBtn = document.getElementById('pdf-viewer-open-new-tab');
+            
+            title.textContent = `Xem trực tuyến: ${fileName}`;
+            iframe.src = filePath;
+            openNewTabBtn.href = filePath;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Chặn cuộn trang nền
+        }
+
+        function closeDocument() {
+            const modal = document.getElementById('pdf-viewer-modal');
+            const iframe = document.getElementById('pdf-viewer-iframe');
+            
+            iframe.src = 'about:blank'; // Dừng tải tài liệu
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Cho phép cuộn trang lại
+        }
+
+        // Đóng modal khi nhấp ra ngoài vùng nội dung modal
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('pdf-viewer-modal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeDocument();
+                    }
+                });
+            }
+        });
     </script>
+
+    <!-- MODAL XEM FILE TRỰC TUYẾN -->
+    <div id="pdf-viewer-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl border border-slate-200/60 w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden animate-[modalScaleIn_0.35s_cubic-bezier(0.16,1,0.3,1)_forwards]">
+            <!-- Header -->
+            <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center flex-shrink-0">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xl">📄</span>
+                    <h3 id="pdf-viewer-title" class="font-bold text-slate-800 text-base md:text-lg truncate max-w-md md:max-w-xl">Xem trực tuyến</h3>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <!-- Open in new tab button -->
+                    <a id="pdf-viewer-open-new-tab" href="#" target="_blank" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-3.5 rounded-xl transition-all duration-300 shadow-sm flex items-center gap-1.5" title="Mở trong tab mới">
+                        ↗️ Tab mới
+                    </a>
+                    <!-- Close button -->
+                    <button onclick="closeDocument()" class="text-slate-500 hover:text-slate-800 hover:bg-slate-200/60 p-2 rounded-xl transition-all font-bold text-lg leading-none">
+                        ✕
+                    </button>
+                </div>
+            </div>
+            <!-- Body -->
+            <div class="flex-1 bg-slate-800 relative">
+                <iframe id="pdf-viewer-iframe" src="about:blank" class="w-full h-full border-0"></iframe>
+            </div>
+        </div>
+    </div>
 </body></html>
 
 
