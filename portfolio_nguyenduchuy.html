@@ -35,10 +35,27 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes fadeOutDown {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
         
         .tab-content.active {
             display: block;
-            animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .tab-content.fading-out {
+            display: block;
+            animation: fadeOutDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            pointer-events: none;
         }
 
         /* CSS phân tách mượt mà cho các Bài tập (Sub-tabs) */
@@ -326,7 +343,7 @@
                         </div>
                         
                         <div class="bg-slate-100/50 rounded-2xl p-5 border border-slate-200/60 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🗂️ Quy tắc đặt tên sáng tạo &amp; Tư duy tổ chức dữ liệu (Mức 4)</h4>
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🗂️ Quy tắc đặt tên sáng tạo &amp; Tư duy tổ chức dữ liệu</h4>
                             <p class="text-xs text-slate-600 leading-relaxed">
                                 <strong>Cú pháp đặt tên:</strong> <code>[MãMôn]_[NămHọc]_[TênTàiLiệu]_[PhiênBản]</code> <br>
                                 <strong>Tư duy tổ chức:</strong> Việc phân chia cấu trúc cây thư mục giúp ngăn ngừa việc phân tán dữ liệu, đảm bảo nguyên tắc "Single Source of Truth", giảm thiểu sai sót khi làm việc nhóm và lưu trữ dài hạn.
@@ -379,7 +396,7 @@
                         </div>
 
                         <div class="bg-slate-100/50 rounded-2xl p-5 border border-slate-200/60 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🔍 Phân tích chiến lược sử dụng 4 toán tử tìm kiếm nâng cao (Mức 4)</h4>
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🔍 Phân tích chiến lược sử dụng 4 toán tử tìm kiếm nâng cao</h4>
                             <p class="text-xs text-slate-600 leading-relaxed">
                                 <strong>Cú pháp sử dụng:</strong> <code>"chuyển đổi số" site:gov.vn filetype:pdf intitle:giáo dục</code><br>
                                 Phân tích cấu trúc: Kết hợp tìm từ khóa chính xác, giới hạn tên miền chính phủ, định dạng tệp PDF khoa học và từ khóa giáo dục trong tiêu đề để tối ưu kết quả chính xác nhất.
@@ -432,7 +449,7 @@
                         </div>
 
                         <div class="bg-slate-100/50 rounded-2xl p-5 border border-slate-200/60 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🤖 Kỹ thuật Prompt chuyên sâu &amp; So sánh cơ chế AI (Mức 4)</h4>
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🤖 Kỹ thuật Prompt chuyên sâu &amp; So sánh cơ chế AI</h4>
                             <p class="text-xs text-slate-600 leading-relaxed">
                                 <strong>Cấu trúc Prompt:</strong> Giao vai trò chuyên gia đào tạo, cung cấp bối cảnh cụ thể và sử dụng kỹ thuật <em>Few-Shot Prompting</em> (đưa ra ví dụ mẫu trước khi yêu cầu AI tạo nội dung). <br>
                                 <strong>So sánh cơ chế hoạt động:</strong> Khác với các cơ sở dữ liệu truyền thống truy xuất thông tin tĩnh, LLM hoạt động theo cơ chế xác suất dự đoán từ tiếp theo (probabilistic next-token generation) từ kho dữ liệu huấn luyện khổng lồ. Việc hiểu rõ cơ chế này giúp kiểm soát thiên kiến và giảm thiểu tình trạng AI đưa ra thông tin không chính xác.
@@ -485,7 +502,7 @@
                         </div>
 
                         <div class="bg-slate-100/50 rounded-2xl p-5 border border-slate-200/60 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">👥 Tối ưu hóa luồng làm việc nhóm &amp; Tính năng nâng cao (Mức 4)</h4>
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">👥 Tối ưu hóa luồng làm việc nhóm &amp; Tính năng nâng cao</h4>
                             <p class="text-xs text-slate-600 leading-relaxed">
                                 Để tối ưu hóa tiến độ làm việc, nhóm đã xây dựng bảng **Kanban nâng cao trên Notion** kết hợp thiết lập tự động hóa: Gửi thông báo trực tiếp đến nhóm Discord khi một thẻ nhiệm vụ thay đổi trạng thái. Mọi thành viên đều được phân quyền chính xác, giảm thiểu hiện tượng "nghẽn cổ chai" thông tin và tối đa hóa hiệu suất làm việc nhóm bất đồng bộ.
                             </p>
@@ -537,7 +554,7 @@
                         </div>
 
                         <div class="bg-slate-100/50 rounded-2xl p-5 border border-slate-200/60 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🎨 Tận dụng tối đa hệ sinh thái AI sáng tạo (Mức 4)</h4>
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">🎨 Tận dụng tối đa hệ sinh thái AI sáng tạo</h4>
                             <p class="text-xs text-slate-600 leading-relaxed">
                                 <strong>Chuỗi quy trình đa công cụ (Multi-tool Pipeline):</strong> <br>
                                 1. Tạo ý tưởng nội dung cốt lõi và kịch bản phân cảnh chi tiết bằng <em>ChatGPT-4o</em>.<br>
@@ -592,7 +609,7 @@
                         </div>
 
                         <div class="bg-slate-100/50 rounded-2xl p-5 border border-slate-200/60 space-y-3">
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">⚖️ Bộ nguyên tắc ứng xử có trách nhiệm &amp; Tư duy phản biện (Mức 4)</h4>
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">⚖️ Bộ nguyên tắc ứng xử có trách nhiệm &amp; Tư duy phản biện</h4>
                             <p class="text-xs text-slate-600 leading-relaxed">
                                 <strong>Bộ nguyên tắc đạo đức cá nhân (6 điều cốt lõi):</strong> <br>
                                 1. <em>Minh bạch nguồn dẫn:</em> Luôn chú thích rõ các phần văn bản được AI hỗ trợ phác thảo.<br>
@@ -873,27 +890,45 @@
         }
 
         // --- 2. QUẢN LÝ TRANG CHÍNH (TABS) ---
+        let isTabswitching = false;
         function switchTab(tabId) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            const activeContent = document.getElementById(tabId);
-            if(activeContent) {
-                activeContent.classList.add('active');
-            }
-
+            if (isTabswitching) return;
+            const activeContent = document.querySelector('.tab-content.active');
+            const targetContent = document.getElementById(tabId);
+            
+            if (!targetContent || activeContent === targetContent) return;
+            
+            isTabswitching = true;
+            
+            // Switch navigation buttons state instantly for crisp feedback
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => {
                 btn.classList.remove('bg-white', 'text-emerald-700', 'shadow-sm', 'border', 'border-white/50');
                 btn.classList.add('text-slate-600', 'hover:text-emerald-700', 'hover:bg-white/30');
             });
-
             const activeBtn = document.getElementById('btn-' + tabId);
             if(activeBtn) {
                 activeBtn.classList.remove('text-slate-600', 'hover:text-emerald-700', 'hover:bg-white/30');
                 activeBtn.classList.add('bg-white', 'text-emerald-700', 'shadow-sm', 'border', 'border-white/50');
+            }
+
+            if (activeContent) {
+                activeContent.classList.remove('active');
+                activeContent.classList.add('fading-out');
+                
+                // Wait for fade out animation to finish
+                setTimeout(() => {
+                    activeContent.classList.remove('fading-out');
+                    targetContent.classList.add('active');
+                    isTabswitching = false;
+                    // Trigger scroll reveal update for the new visible elements
+                    if (typeof initScrollReveal === 'function') {
+                        initScrollReveal();
+                    }
+                }, 200);
+            } else {
+                targetContent.classList.add('active');
+                isTabswitching = false;
             }
         }
 
