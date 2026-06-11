@@ -933,71 +933,77 @@
                     <p class="text-slate-500 text-sm">Đừng ngần ngại liên hệ nếu bạn có bất kỳ câu hỏi nào hoặc muốn hợp tác cùng tôi trong các dự án tương lai.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8 pt-6">
-                    <!-- Thông tin liên hệ -->
-                    <div class="space-y-6 flex flex-col justify-center reveal-stagger">
-                        <div class="space-y-4">
-                            <h3 class="text-xl font-bold text-slate-800">Thông tin liên hệ</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Bạn có thể liên hệ trực tiếp với tôi qua địa chỉ email hoặc kết nối qua kênh GitHub dưới đây.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+                    <!-- Thẻ 1: Trạng Thái & Giờ Địa Phương -->
+                    <div class="bg-white/50 backdrop-blur-sm rounded-3xl p-6 border border-white/60 shadow-sm flex flex-col justify-between h-64 transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Trạng Thái & Giờ Địa Phương</span>
+                            <span class="flex h-3 w-3 relative">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                            </span>
                         </div>
-                        
-                        <div class="space-y-4">
-                            <!-- Địa chỉ Email -->
-                            <div class="flex items-center gap-4 p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/60 shadow-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
-                                <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Email Học Tập</p>
-                                    <a href="mailto:25023267@vnu.edu.vn" class="text-sm font-semibold text-slate-700 hover:text-emerald-700 transition-colors">25023267@vnu.edu.vn</a>
-                                </div>
-                            </div>
-                            
-                            <!-- GitHub -->
-                            <div class="flex items-center gap-4 p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/60 shadow-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
-                                <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
-                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">GitHub</p>
-                                    <a href="https://github.com/Duchuy2007-is" target="_blank" class="text-sm font-semibold text-slate-700 hover:text-emerald-700 transition-colors">github.com/Duchuy2007-is</a>
-                                </div>
-                            </div>
+                        <div class="my-auto text-center">
+                            <div id="local-time" class="text-4xl md:text-5xl font-extrabold text-emerald-800 font-display tracking-tight">00:00:00</div>
+                            <div class="text-xs text-slate-500 mt-2 font-medium">Hà Nội, Việt Nam (GMT+7)</div>
+                        </div>
+                        <div class="text-xs font-semibold text-emerald-700 bg-emerald-50/50 border border-emerald-100/50 py-1.5 px-3 rounded-xl text-center">
+                            🟢 Sẵn sàng hợp tác dự án
                         </div>
                     </div>
 
-                    <!-- Form liên hệ -->
-                    <div class="bg-white/40 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/60 shadow-sm space-y-4">
-                        <h3 class="text-lg font-bold text-slate-800">Gửi Tin Nhắn</h3>
-                        
-                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
-                            <div class="space-y-1">
-                                <label for="contact-name" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Họ và Tên</label>
-                                <input type="text" id="contact-name" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800" placeholder="Nguyễn Văn A">
-                            </div>
+                    <!-- Thẻ 2: Email Sao Chép Nhanh -->
+                    <div onclick="copyEmailToClipboard()" class="bg-white/50 backdrop-blur-sm rounded-3xl p-6 border border-white/60 shadow-sm flex flex-col justify-between h-64 transition-transform duration-300 hover:scale-[1.02] hover:shadow-md cursor-pointer group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Email Học Tập</span>
+                            <span class="text-xl p-2 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100 group-hover:scale-110 transition-transform duration-300">📧</span>
+                        </div>
+                        <div class="my-auto text-center space-y-1">
+                            <div id="email-text" class="text-lg md:text-xl font-bold text-slate-800 break-all select-all transition-transform duration-300">25023267@vnu.edu.vn</div>
+                            <p id="email-tooltip" class="text-xs text-slate-500 font-medium transition-all duration-300">Nhấp vào thẻ để sao chép nhanh</p>
+                        </div>
+                        <div class="text-xs font-semibold text-center text-slate-400 group-hover:text-emerald-600 transition-colors">
+                            Sao chép địa chỉ thư 📋
+                        </div>
+                    </div>
 
-                            <div class="space-y-1">
-                                <label for="contact-email" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Địa chỉ Email</label>
-                                <input type="email" id="contact-email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800" placeholder="nguyenvana@example.com">
+                    <!-- Thẻ 3: GitHub Profile Card -->
+                    <a href="https://github.com/Duchuy2007-is" target="_blank" class="bg-white/50 backdrop-blur-sm rounded-3xl p-6 border border-white/60 shadow-sm flex flex-col justify-between h-64 transition-transform duration-300 hover:scale-[1.02] hover:shadow-md group">
+                        <div class="flex justify-between items-start">
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">GitHub Profile</span>
+                            <span class="text-xl p-2 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100 group-hover:rotate-12 transition-transform duration-300">
+                                <svg class="w-6 h-6 fill-current text-emerald-600" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="my-auto space-y-2 text-left">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-400 to-green-600 flex items-center justify-center text-white font-bold font-display shadow-md">NDH</div>
+                                <div>
+                                    <div class="text-sm font-bold text-slate-800">Nguyễn Đức Huy</div>
+                                    <div class="text-xs text-slate-400 font-medium">@Duchuy2007-is</div>
+                                </div>
                             </div>
+                            <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">Xem các dự án và sản phẩm học tập của tôi tại đây.</p>
+                        </div>
+                        <div class="text-xs font-semibold text-emerald-700 bg-emerald-50/50 border border-emerald-100/50 py-1.5 px-3 rounded-xl text-center group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                            Ghé thăm GitHub ↗️
+                        </div>
+                    </a>
 
-                            <div class="space-y-1">
-                                <label for="contact-subject" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Tiêu đề</label>
-                                <input type="text" id="contact-subject" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800" placeholder="Hợp tác phát triển dự án">
-                            </div>
-
-                            <div class="space-y-1">
-                                <label for="contact-message" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Nội dung tin nhắn</label>
-                                <textarea id="contact-message" rows="4" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800 resize-none" placeholder="Xin chào, tôi muốn thảo luận về..."></textarea>
-                            </div>
-
-                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-md shadow-emerald-100 flex items-center justify-center gap-2 hover:-translate-y-0.5 btn-glare">
-                                <span>Gửi Tin Nhắn</span>
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Thẻ 4: Gửi Lời Nhắn Nhanh Tối Giản -->
+                    <div class="col-span-1 md:col-span-3 bg-white/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white/60 shadow-sm flex flex-col md:flex-row justify-between items-center gap-6 transition-transform duration-300 hover:scale-[1.01]">
+                        <div class="space-y-2 text-center md:text-left flex-1">
+                            <h3 class="text-lg font-bold text-slate-800">Liên hệ nhanh</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed">Bạn muốn gửi lời nhắn nhanh? Nhập thông tin của bạn vào thanh bên cạnh.</p>
+                        </div>
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="w-full md:w-auto flex-1 flex flex-col sm:flex-row gap-3">
+                            <input type="email" id="contact-email" required class="flex-1 px-4 py-3 rounded-xl border border-slate-200/60 bg-white/70 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-xs text-slate-800" placeholder="Email của bạn...">
+                            <input type="text" id="contact-message" required class="flex-[2] px-4 py-3 rounded-xl border border-slate-200/60 bg-white/70 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-xs text-slate-800" placeholder="Tin nhắn của bạn...">
+                            <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-md shadow-emerald-100 flex items-center justify-center gap-2 btn-glare flex-shrink-0 text-xs">
+                                <span>Gửi</span>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
                                 </svg>
                             </button>
@@ -1099,6 +1105,10 @@
             initProfile();
             await loadSavedFiles();
             fixBrokenOpenDownloadLinks();
+            
+            // Khởi chạy đồng hồ thời gian thực cho phần Liên hệ Bento Grid
+            updateLocalTime();
+            setInterval(updateLocalTime, 1000);
             
             // Fade out preloader after all loads finish
             const preloader = document.getElementById('preloader');
@@ -1913,17 +1923,13 @@
         // --- HÀM XỬ LÝ LIÊN HỆ ---
         function handleContactSubmit(e) {
             e.preventDefault();
-            const name = document.getElementById("contact-name").value;
             const email = document.getElementById("contact-email").value;
-            const subject = document.getElementById("contact-subject").value;
             const message = document.getElementById("contact-message").value;
 
             // Lưu tin nhắn vào localStorage để quản trị hoặc xem lại sau
             const contactMessages = JSON.parse(localStorage.getItem("contact_messages") || "[]");
             contactMessages.push({
-                name: name,
                 email: email,
-                subject: subject,
                 message: message,
                 time: new Date().toISOString()
             });
@@ -1938,6 +1944,43 @@
 
         function closeSuccessModal() {
             document.getElementById("contact-success-modal").classList.add("hidden");
+        }
+
+        function copyEmailToClipboard() {
+            const email = "25023267@vnu.edu.vn";
+            navigator.clipboard.writeText(email).then(() => {
+                const tooltip = document.getElementById("email-tooltip");
+                const emailText = document.getElementById("email-text");
+                if (tooltip && emailText) {
+                    const originalTooltip = tooltip.innerText;
+                    tooltip.innerText = "Đã sao chép thành công! 📋";
+                    tooltip.classList.add("text-emerald-600", "font-bold");
+                    emailText.classList.add("scale-105", "text-emerald-700");
+                    
+                    setTimeout(() => {
+                        tooltip.innerText = originalTooltip;
+                        tooltip.classList.remove("text-emerald-600", "font-bold");
+                        emailText.classList.remove("scale-105", "text-emerald-700");
+                    }, 2000);
+                }
+            }).catch(err => {
+                console.error("Lỗi khi sao chép email: ", err);
+            });
+        }
+
+        function updateLocalTime() {
+            const clock = document.getElementById("local-time");
+            if (clock) {
+                const options = {
+                    timeZone: 'Asia/Ho_Chi_Minh',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                };
+                const formatter = new Intl.DateTimeFormat('vi-VN', options);
+                clock.innerText = formatter.format(new Date());
+            }
         }
     </script>
 
