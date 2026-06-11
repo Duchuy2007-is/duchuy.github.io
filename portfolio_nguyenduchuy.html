@@ -458,6 +458,7 @@
                 <button onclick="switchTab('gioi-thieu')" id="btn-gioi-thieu" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 bg-white text-emerald-700 shadow-sm border border-white/50">Trang Giới Thiệu</button>
                 <button onclick="switchTab('du-an')" id="btn-du-an" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 text-slate-600 hover:text-emerald-700 hover:bg-white/30">Trang Dự Án</button>
                 <button onclick="switchTab('tong-ket')" id="btn-tong-ket" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 text-slate-600 hover:text-emerald-700 hover:bg-white/30">Trang Tổng Kết</button>
+                <button onclick="switchTab('lien-he')" id="btn-lien-he" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 text-slate-600 hover:text-emerald-700 hover:bg-white/30">Trang Liên Hệ</button>
             </nav>
         </div>
     </header>
@@ -921,6 +922,88 @@
                             Những kỹ năng số đạt được như quản lý dữ liệu, tư duy AI và làm việc nhóm trực tuyến tối ưu sẽ là nền tảng giúp tôi thích nghi hiệu quả trong mọi môi trường làm việc số tương lai.
                         </p>
                     </div>
+        </section>
+
+        <!-- ================= TRANG LIÊN HỆ ================= -->
+        <section id="lien-he" class="tab-content space-y-8">
+            <div class="bg-white/70 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/80 space-y-8 shadow-lg tilt-card reveal-3d">
+                <div class="card-glare-wrapper"><div class="card-glare"></div></div>
+                <div class="text-center max-w-xl mx-auto space-y-3">
+                    <h2 class="text-3xl font-extrabold text-slate-900">Kết Nối Với Tôi</h2>
+                    <p class="text-slate-500 text-sm">Đừng ngần ngại liên hệ nếu bạn có bất kỳ câu hỏi nào hoặc muốn hợp tác cùng tôi trong các dự án tương lai.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 pt-6">
+                    <!-- Thông tin liên hệ -->
+                    <div class="space-y-6 flex flex-col justify-center reveal-stagger">
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-bold text-slate-800">Thông tin liên hệ</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">Bạn có thể liên hệ trực tiếp với tôi qua địa chỉ email hoặc kết nối qua kênh GitHub dưới đây.</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <!-- Địa chỉ Email -->
+                            <div class="flex items-center gap-4 p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/60 shadow-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Email Học Tập</p>
+                                    <a href="mailto:25023267@vnu.edu.vn" class="text-sm font-semibold text-slate-700 hover:text-emerald-700 transition-colors">25023267@vnu.edu.vn</a>
+                                </div>
+                            </div>
+                            
+                            <!-- GitHub -->
+                            <div class="flex items-center gap-4 p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-white/60 shadow-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-md">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
+                                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">GitHub</p>
+                                    <a href="https://github.com/Duchuy2007-is" target="_blank" class="text-sm font-semibold text-slate-700 hover:text-emerald-700 transition-colors">github.com/Duchuy2007-is</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form liên hệ -->
+                    <div class="bg-white/40 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-white/60 shadow-sm space-y-4">
+                        <h3 class="text-lg font-bold text-slate-800">Gửi Tin Nhắn</h3>
+                        
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="space-y-1">
+                                <label for="contact-name" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Họ và Tên</label>
+                                <input type="text" id="contact-name" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800" placeholder="Nguyễn Văn A">
+                            </div>
+
+                            <div class="space-y-1">
+                                <label for="contact-email" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Địa chỉ Email</label>
+                                <input type="email" id="contact-email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800" placeholder="nguyenvana@example.com">
+                            </div>
+
+                            <div class="space-y-1">
+                                <label for="contact-subject" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Tiêu đề</label>
+                                <input type="text" id="contact-subject" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800" placeholder="Hợp tác phát triển dự án">
+                            </div>
+
+                            <div class="space-y-1">
+                                <label for="contact-message" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Nội dung tin nhắn</label>
+                                <textarea id="contact-message" rows="4" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200/60 bg-white/50 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300 text-sm text-slate-800 resize-none" placeholder="Xin chào, tôi muốn thảo luận về..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-md shadow-emerald-100 flex items-center justify-center gap-2 hover:-translate-y-0.5 btn-glare">
+                                <span>Gửi Tin Nhắn</span>
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1826,7 +1909,55 @@
             }
             animate();
         }
+
+        // --- HÀM XỬ LÝ LIÊN HỆ ---
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById("contact-name").value;
+            const email = document.getElementById("contact-email").value;
+            const subject = document.getElementById("contact-subject").value;
+            const message = document.getElementById("contact-message").value;
+
+            // Lưu tin nhắn vào localStorage để quản trị hoặc xem lại sau
+            const contactMessages = JSON.parse(localStorage.getItem("contact_messages") || "[]");
+            contactMessages.push({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                time: new Date().toISOString()
+            });
+            localStorage.setItem("contact_messages", JSON.stringify(contactMessages));
+
+            // Hiển thị modal thành công
+            document.getElementById("contact-success-modal").classList.remove("hidden");
+            
+            // Khởi tạo hiệu ứng nút bấm thành công
+            document.getElementById("contact-form").reset();
+        }
+
+        function closeSuccessModal() {
+            document.getElementById("contact-success-modal").classList.add("hidden");
+        }
     </script>
+
+    <!-- TOAST NOTIFICATION THÀNH CÔNG (GLASSMORPHISM STYLE) -->
+    <div id="contact-success-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-md z-[999999] flex items-center justify-center p-4 hidden">
+        <div class="bg-white/80 backdrop-blur-2xl rounded-3xl p-8 max-w-md w-full border border-white/80 shadow-[0_30px_70px_-10px_rgba(16,185,129,0.18)] text-center space-y-5 animate-[modalScaleIn_0.35s_cubic-bezier(0.16,1,0.3,1)_forwards]">
+            <div class="w-16 h-16 bg-emerald-50 border border-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto shadow-sm">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-extrabold text-slate-900">Gửi Thành Công!</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">Cảm ơn bạn đã liên hệ. Tin nhắn của bạn đã được nhận và tôi sẽ phản hồi lại bạn sớm nhất có thể.</p>
+            </div>
+            <button onclick="closeSuccessModal()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-6 rounded-xl transition-all duration-300 shadow-md shadow-emerald-100 btn-glare">
+                Đóng
+            </button>
+        </div>
+    </div>
 
     <!-- MODAL XEM FILE TRỰC TUYẾN (GLASSMORPHISM STYLE) -->
     <div id="pdf-viewer-modal" class="fixed inset-0 bg-slate-950/40 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
